@@ -1,0 +1,70 @@
+/*
+ * ACAL & HERNANDEZ
+ */
+import java.util.*;
+
+public class AcalHernandez {
+
+    public static void main(String[] args) {
+        System.out.println("\t\tMENU\n\t[1] Simple Random Sampling\n\t[2] Systematic Sampling\n\t[3] Stratified Sampling\n\t[4] Quit");
+        List<Integer> frame = new ArrayList<Integer>();
+        List<Integer> samples = new ArrayList<Integer>();
+
+        Scanner scan = new Scanner(System.in);
+        Integer choice = scan.nextInt();
+
+        if(choice == 1){
+            System.out.println("\t\tSimple Random");
+            System.out.println("Input Population Size:");
+            Integer size = scan.nextInt();
+
+            System.out.println("Input Sampling Frame (number per Enter):");
+            for(int i = 0; i < size; i++){ frame.add(scan.nextInt());}
+            for(Integer a: frame){
+                System.out.println("[" + frame.indexOf(a) +"]\t" + a);
+            }
+
+
+            System.out.println("Method of choosing a sample size\n[1]Default & [2]Input");
+            Integer ch = scan.nextInt();
+            Double sample = 0.0;
+            if(ch == 2) {
+                while (sample == 0 || sample >= size) {
+                    System.out.println("Input Sample Size:");
+                    sample = scan.nextDouble();
+                }
+            } else {
+                Double secSize = (double)size*.2;
+                sample = Math.ceil(secSize);
+            }
+
+            for(int i = 0; i < sample; i++){
+                Random rands = new Random();
+                int  rand = rands.nextInt(frame.size()-1) + 1;
+                //ADD HECKING HERE
+                samples.add(frame.get(rand));
+            }
+
+            for(Integer b: samples){
+                System.out.println("[" + frame.indexOf(b) +"]\t" + b);
+            }
+
+
+
+        }else if(choice == 2){
+
+        }else if(choice == 3){
+
+        }else {
+            System.exit(0);
+        }
+
+
+
+
+
+
+
+    }
+
+}
