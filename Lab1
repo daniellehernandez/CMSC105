@@ -20,16 +20,46 @@ public class AcalHernandez {
         Scanner scan = new Scanner(System.in);
         Integer choice = scan.nextInt();
         Integer mode = 0, size = 0;
-
-        System.out.println("Mode of getting Sample Frame: [1]Manual [2]File");
-        mode = scan.nextInt();
+        boolean bError = true;
+        
+         do {
+            try {
+                System.out.println("Mode of getting Sample Frame: [1]Manual [2]File");
+     		mode = scan.nextInt();
+     		break;
+            } 
+            catch (Exception e) {
+                System.out.println("Wrong Input"); 
+                scan.next();
+            }
+        } while (true);
+        
+      
+        
         if(mode == 1) {
-            System.out.println("Input Population Size:");
-            size = scan.nextInt();
+            do {
+            try {
+                System.out.println("Input Population Size:");
+            	size = scan.nextInt();
+            
+     		break;
+            } 
+            catch (Exception e) {
+                System.out.println("Wrong Input"); 
+                scan.next();
+            }
+      	  } while (true);
+            
 
             System.out.println("Input Sampling Frame (number per Enter):");
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < size;) {
+            	try{
                 frame.add(scan.nextInt());
+                i++;
+               }catch(Exception e){
+               	System.out.println("Numbers Only");
+               	scan.next();
+               }
             }
             for (int z = 0; z < frame.size(); z++) {
                 System.out.println("[" + z + "]\t" + frame.get(z));
@@ -128,6 +158,28 @@ public class AcalHernandez {
 
 
         }else if(choice == 3){
+        	
+            List<Integer> modifiable = new ArrayList<>(frame);
+            List<Integer> index = new ArrayList<Integer>();
+            int in = 0;
+            
+            while(in != frame.size()){
+            	for(Integer d: modifiable){
+            	  if(d.equals(frame.get(in))){
+            	  	index.add(d);
+            	  	System.out.println("nisulod");
+            	  	//modifiable.remove(modifiable.indexOf(d));
+            	  	
+            	  }	
+            	}
+            	System.out.println("\n\n");
+            	in++;
+            }
+        
+        for(Integer y: index){
+        System.out.println(y);
+        }
+        	
 
         }else {
             System.exit(0);
