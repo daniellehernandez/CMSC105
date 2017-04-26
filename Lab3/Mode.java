@@ -4,11 +4,14 @@ import java.util.ArrayList;
  * Created by the tutees on 4/24/2017.
  */
 public class Mode {
-    public Double getmode(ArrayList<Double> list, ArrayList<Integer> list2, Integer type) {
+    public ArrayList getmode(ArrayList<Double> list, ArrayList<Integer> list2, Integer type) {
+        ArrayList modes = new ArrayList();
         double mode = 0.0;
         if(type == 2){
             mode = list.get(0);
             int maxCount = 0;
+            int store = 0;
+
             for (int i = 0; i < list.size(); i++) {
                 double value = list.get(i);
                 int count = 1;
@@ -19,11 +22,17 @@ public class Mode {
                         maxCount = count;
                     }
                 }
+                if(count == maxCount){
+                    if(!(modes.contains(list2.get(i)))) {
+                        modes.add(list2.get(i));
+                    }
+                }
             }
-            return mode;
+            return modes;
         } else if (type == 1){
             mode = list2.get(0)+0.0;
             int maxCount = 0;
+
             for (int i = 0; i < list2.size(); i++) {
                 double value = list2.get(i);
                 int count = 1;
@@ -33,11 +42,19 @@ public class Mode {
                         mode = value;
                         maxCount = count;
                     }
+
                 }
+
+              if(count == maxCount && count > 2){
+                    if(!(modes.contains(list2.get(i)))) {
+                        modes.add(list2.get(i));
+                    }
+              }
+
             }
-            return mode;
+            return modes;
         }
 
-        return mode;
+        return modes;
     }
 }
