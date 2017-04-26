@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Double> Doubleframe = new ArrayList<>();
         ArrayList<Integer> Integerframe = new ArrayList<>();
+        ArrayList<Integer> modes = new ArrayList<>();
         int inSize;
         int CI;
         List<Double> lowerCL = new ArrayList<>();
@@ -103,13 +104,35 @@ public class Main {
                     System.out.println("median: " + median.medUn(Doubleframe,Integerframe,type));
                     main(args);
             }else if (choice3 == 3){
+                
+                modes = mode.getmode(Doubleframe,Integerframe,type);
+                System.out.println("mode: "+modes);
+                if (modes.size() == 0){
+                    System.out.print(" No Mode");
+                } else if (modes.size() == 1){
+                    System.out.print(" Unimodal");
+                }else if (modes.size() == 2){
+                    System.out.print(" Bimodal");
+                } else if(modes.size() > 2){
+                    System.out.print(" Multi-modal");
+                }
 
             }else if (choice3 == 4){
                     System.out.println("mean: " + mean.meanUngrouped(Doubleframe,Integerframe,type) + "\nstandard dev: " + mean.ugStandasrdDev(Doubleframe,Integerframe,type));
                     System.out.println("median: "+median.medUn(Doubleframe,Integerframe,type));
-                    System.out.println("mode: "+mode.getmode(Doubleframe,Integerframe,type));
-                    main(args);
+                    modes = mode.getmode(Doubleframe,Integerframe,type);
+                    System.out.println("mode: "+modes);
+                    if (modes.size() == 0){
+                        System.out.print(" No Mode");
+                    } else if (modes.size() == 1){
+                        System.out.print(" Unimodal");
+                    }else if (modes.size() == 2){
+                        System.out.print(" Bimodal");
+                    } else if(modes.size() > 2){
+                        System.out.print(" Multi-modal");
+                    }
             }
+                    main(args);
         }else if(choice == 2){
             do {
                 try {
